@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { View, Text, StyleSheet, StatusBar, Image, TouchableOpacity, TextInput } from 'react-native'
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-export default function Header() {
+export default function Header({ setPage }) {
 
-  const [search, setSearch] = useState('');
-  const [searchBarActive, setSearchBarActive] = useState(false)
+  // const [search, setSearch] = useState('');
+  // const [searchBarActive, setSearchBarActive] = useState(false)
 
   return (
     <View style={styles.header}>
@@ -18,15 +18,15 @@ export default function Header() {
           <Text style={styles.headerItems}>Tracks</Text>
           <Text style={styles.headerItems}>Albums</Text>
           <Text style={styles.headerItems}>Artist</Text>
-          <TouchableOpacity onPress={() => setSearchBarActive(!searchBarActive)}>
+          <TouchableOpacity onPress={() => setPage('search')}>
             <Ionicons name='search' size={24} />
           </TouchableOpacity>
         </View>
 
       </View>
-      {searchBarActive || <View style={styles.searchBarContainer}>
+      {/* {searchBarActive || <View style={styles.searchBarContainer}>
         <TextInput style={styles.searchBar} defaultValue={search} onChangeText={newText => setSearch(newText)} />
-      </View>}
+      </View>} */}
     </View>
   )
 }
@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain'
   },
   navBar: {
+    width: '100%',
     flexDirection: 'row',
     backgroundColor: 'grey',
     marginTop: StatusBar.currentHeight,
