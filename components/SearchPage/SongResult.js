@@ -3,21 +3,41 @@ import { StyleSheet, View, Text, Image, TouchableOpacity, TextInput } from "reac
 export default function SongResult({ song }) {
   return (
     <View style={styles.item}>
-      <Image width={'100%'} style={styles.logo} source={{ uri: song.thumbnail }} />
-      <Text>{song.title}</Text>
+      <Image style={styles.logo} source={{ uri: song.thumbnail }} />
+      <Text style={styles.text}>{song.title} This is a new Song!</Text>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   item: {
-    flexDirection: 'row',
-    width: '100%',
-    height: 50,
+    flexdirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'left',
+    width: '95vw',
+    overflow: 'hidden',
+    height: 200,
+    backgroundColor: 'grey',
+    justifycontent: 'center',
+    marginBottom: 10,
+    marginTop: 10,
+    borderColor: 'purple',
+    borderWidth: 2,
+    marginLeft: 5,
+    marginRight: 5,
   },
   logo: {
-    width: '100%',
+    width: 200,
     height: '100%',
-    resizeMode: 'contain'
+    borderColor: '#fff',
+    borderWidth: '2px',
+    resizeMode: 'contain',
+    alignself: 'flex-start'
+  },
+  text: {
+    height: 200,
+    width: '100vw',
+    backgroundColor: 'white',
+    alignself: 'flex-start'
   }
 })

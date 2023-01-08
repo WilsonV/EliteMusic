@@ -10,7 +10,8 @@ export default async function makeYoutubeSearch(searchTerm) {
         part: 'snippet',
         q: searchTerm,
         videoCategoryId: 10,
-        type: 'video'
+        type: 'video',
+        maxResults: 20,
       }
     })
 

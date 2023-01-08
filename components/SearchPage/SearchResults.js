@@ -4,7 +4,7 @@ import SongResult from "./SongResult";
 export default function SearchResults({ results }) {
   return (
     <View style={styles.content}>
-      {results.map(song => <SongResult key={song.title} song={song} />)}
+      {results.map(song => <SongResult key={song.videoId} song={song} />)}
     </View>
   )
 }
@@ -13,6 +13,7 @@ export default function SearchResults({ results }) {
 const styles = StyleSheet.create({
 
   content: {
-    flex: 1
+    flex: 1,
+    alignItems: 'center',
   }
 })
