@@ -1,34 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, StatusBar as ReactStatusBar } from 'react-native';
-import Header from './components/Header';
-import MusicPlayer from './components/MusicPlayer';
-import SearchPage from './components/SearchPage';
-import { useState } from 'react'
+import { Provider } from 'react-redux';
+import store from './store';
+import PageProvider from './components/PageContext';
+import NavigationalApp from './components/NavigationalApp';
 
 export default function App() {
-  const [page, setPageToShow] = useState('musicplayer')
   return (
-    <View style={styles.container}>
-      {/*Header*/}
-      <Header setPage={setPageToShow} />
-
-      <View style={styles.content}>
-        {page === "musicplayer" && <MusicPlayer />}
-        {page === "search" && <SearchPage />}
-      </View>
-
+    <PageProvider>
+      <Provider store={store}>
+        <NavigationalApp />
+      </Provider>
       <StatusBar style="auto" />
-    </View>
+    </PageProvider>
   );
 }
-
-const styles = StyleSheet.create({
-
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  content: {
-    flex: 1,
-  }
-});

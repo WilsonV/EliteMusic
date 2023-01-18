@@ -24,7 +24,7 @@ export default async function makeYoutubeSearch(searchTerm) {
         videoId: item.id.videoId
       }
     })
-    console.log(videoList)
+    //console.log(videoList)
     return videoList
   } catch (error) {
     console.log(error)

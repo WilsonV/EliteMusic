@@ -1,32 +1,30 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { View, Text, StyleSheet, StatusBar, Image, TouchableOpacity, TextInput } from 'react-native'
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { usePageUpdate } from '../PageContext';
 
-export default function Header({ setPage }) {
-
-  // const [search, setSearch] = useState('');
-  // const [searchBarActive, setSearchBarActive] = useState(false)
-
+export default function Header() {
+  const changePageTo = usePageUpdate();
   return (
     <View style={styles.header}>
       <View style={styles.navBar}>
-        <Image width={'100%'} style={styles.logo} source={require('../assets/logo.png')} />
+        <TouchableOpacity onPress={() => changePageTo('musicplayer')}>
+          <Image width={'100%'} style={styles.logo} source={require('../../assets/logo.png')} />
+        </TouchableOpacity>
 
         <View style={styles.navBarContainer}>
           <Text style={styles.headerItems}>Favorite</Text>
-          <Text style={styles.headerItems}>Playlist</Text>
-          <Text style={styles.headerItems}>Tracks</Text>
+          <TouchableOpacity onPress={() => changePageTo('playlist')}>
+            <Text style={styles.headerItems}>Playlist</Text>
+          </TouchableOpacity>
           <Text style={styles.headerItems}>Albums</Text>
-          <Text style={styles.headerItems}>Artist</Text>
-          <TouchableOpacity onPress={() => setPage('search')}>
+          <Text style={styles.headerItems}>Artists</Text>
+          <TouchableOpacity onPress={() => changePageTo('search')}>
             <Ionicons name='search' size={24} />
           </TouchableOpacity>
         </View>
 
       </View>
-      {/* {searchBarActive || <View style={styles.searchBarContainer}>
-        <TextInput style={styles.searchBar} defaultValue={search} onChangeText={newText => setSearch(newText)} />
-      </View>} */}
     </View>
   )
 }
